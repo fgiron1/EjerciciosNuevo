@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <parameter name="searchText" value="param-val-not-found"/>
+  <parameter name="browserUsed" value="param-val-not-found"/>
+  <test name="Default test(failed)">
+    <classes>
+      <class name="test.SearchTest">
+        <methods>
+          <include name="search" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- test.SearchTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

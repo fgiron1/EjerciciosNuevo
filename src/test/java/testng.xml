@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite parallel="tests" thread-count="2" name="Suite">
+
+  <parameter name="browserUsed" value="chrome"/>
+  <parameter name="searchText" value="coco loco"/>
+  	
+  <test name="searchTest1">
+  
+    <classes>
+      <class name="test.SearchTest"/>
+      <class name="utils.Base"/>
+    </classes>
+  </test> 
+  
+  <test name="searchTest2">
+    <classes>
+      <class name="test.SearchTest"/>
+      <class name="utils.Base"/>
+    </classes>
+  </test> 
+  
+  <test name="addVideoToQueueTest">
+    <classes>
+      <class name="test.AddVideoToQueueTest"/>
+      <class name="utils.Base"/>
+    </classes>
+  </test>
+  
+</suite> 
