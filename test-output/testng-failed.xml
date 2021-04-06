@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <parameter name="searchText" value="coco loco"/>
-  <parameter name="browserUsed" value="firefox"/>
-  <test parallel="tests" name="Default test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="searchText" value="loco"/>
+  <parameter name="browserUsed" value="chrome"/>
+  <test name="Default test(failed)">
     <classes>
-      <class name="test.AddVideoToQueueTest">
+      <class name="test.SearchTest">
         <methods>
-          <include name="startUpChromeBrowser"/>
-          <include name="tearDown"/>
-          <include name="testHistory" invocation-numbers="0"/>
+          <include name="search" invocation-numbers="0"/>
         </methods>
-      </class> <!-- test.AddVideoToQueueTest -->
+      </class> <!-- test.SearchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

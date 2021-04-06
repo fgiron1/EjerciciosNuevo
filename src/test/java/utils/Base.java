@@ -25,7 +25,7 @@ public class Base {
 	 * Startup - Instantiate webdriver and open Chrome browser
 	 */
 	
-	@BeforeSuite
+	@BeforeTest
 	public static WebDriver startUpChromeBrowser() {
 		try {
 
@@ -115,7 +115,7 @@ public class Base {
 	 * Close browser and kill process
 	 */
 	
-	@AfterSuite
+	@AfterTest
 	public void tearDown() {
 		
 		

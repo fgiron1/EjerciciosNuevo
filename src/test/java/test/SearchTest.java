@@ -4,9 +4,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -36,6 +38,8 @@ public class SearchTest {
 		
 		YoutubeHome HomePage = new YoutubeHome();
 		SearchTest helper = new SearchTest();
+		
+		
 		
 		//Step 1. Open the browser and navigate to youtube home page
 				
@@ -78,10 +82,6 @@ public class SearchTest {
 			
 		}
 		
-		
-		
-		
-		
 		//End of Step 2.
 		
 		
@@ -100,14 +100,24 @@ public class SearchTest {
 			
 			//Checking current URL to see if it worked
 			
+			//Not prepared for special characters
 			String urlQuery = "https://www.youtube.com/results?search_query=" + searchText.replace(" ", "+");
 			
-			if(urlQuery.equals(Base.driver.getCurrentUrl())) {
-				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath("./src/test/resources/Step3_success.png", "Step 3 completed").build());
-			} else {
-				test.log(Status.FAIL,  MediaEntityBuilder.createScreenCaptureFromPath("./src/test/resources/Step3_fail.png", "Step 3 failed").build());
-			}
+			//If they're not equal, the program will throw an exception, which will be caught
+			//(CAUGHT EXCEPTIONS DON'T HALT THE TEST EXECUTION)
 		
+			Assert.assertEquals(Base.driver.getCurrentUrl(), urlQuery);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath("./src/test/resources/Step3_success.png", "Step 3 completed").build());
+			
+
+		//Exceptions and errors are different in the throwable hierarchy
+			
+		} catch(AssertionError e) {
+			
+			//Blocking error, thus, not only this step fails, but the whole test
+			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath("./src/test/resources/Step3_fail.png", "Step 3 failed").build());
+			test.fail(e);
+			
 		} catch(Exception e) {
 			
 			//Blocking error, thus, not only this step fails, but the whole test
