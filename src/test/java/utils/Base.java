@@ -54,6 +54,7 @@ public class Base {
 				System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");	
 			} else {
 				System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
+				options.addArguments("--headless", "--window-size=1440,900");
 				//Headless browser option?
 			}
 			
