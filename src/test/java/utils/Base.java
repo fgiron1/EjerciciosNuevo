@@ -46,7 +46,17 @@ public class Base {
 		
 		try {
 			
-			System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+			String osNameLowerCase = System.getProperty("os.name").toLowerCase(); 
+			
+			//Distinguishing between linux and windows chromedriver
+			
+			if(osNameLowerCase.contains("windows")) {
+				System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");	
+			} else {
+				System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
+				//Headless browser option?
+			}
+			
 			
 			options.addArguments("start-maximized"); // open Browser in maximized mode
 			options.addArguments("--disable-infobars"); // disabling infobars
